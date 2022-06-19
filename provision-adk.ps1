@@ -6,9 +6,8 @@ $adkUrl = 'https://software-download.microsoft.com/download/sg/20348.1.210507-15
 $winpeAdkAddonUrl = 'https://software-download.microsoft.com/download/sg/20348.1.210507-1500.fe_release_amd64fre_ADKWINPEADDONS.iso'
 
 function Install-Adk($title, $url) {
-    $artifactPath = "C:\vagrant\tmp\$(Split-Path -Leaf $url)"
+    $artifactPath = "C:\$(Split-Path -Leaf $url)"
     if (!(Test-Path $artifactPath)) {
-        mkdir -Force (Split-Path -Parent $artifactPath) | Out-Null
         Write-Host "Downloading $title..."
         (New-Object System.Net.WebClient).DownloadFile($url, "$artifactPath.tmp")
         Move-Item "$artifactPath.tmp" $artifactPath
