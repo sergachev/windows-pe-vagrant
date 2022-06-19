@@ -16,5 +16,5 @@ Get-ChildItem $qemuDriversPath -Include 2k22 -Recurse `
     | Where-Object { Test-Path "$_\amd64" } `
     | ForEach-Object {
         Write-Output "Adding the $_\amd64 driver..."
-        Add-WindowsDriver -Path $env:WINDOWS_PE_MOUNT_PATH -Driver "$_\amd64"
+        Add-WindowsDriver -Path "C:\winpe-amd64\mount" -Driver "$_\amd64"
     }
